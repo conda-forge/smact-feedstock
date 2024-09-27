@@ -1,5 +1,5 @@
 {% set name = "smact" %}
-{% set version = "2.6" %}
+{% set version = "2.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 763d1b4e8d8ba490e21a5a5989d107e475608c418e388722ba0359a22b50c15f
+  sha256: cbd772762acf5dbd867ebea56e5dd61812190e78432326ad68360a7da2136466
 
 build:
   noarch: python
