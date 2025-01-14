@@ -1,5 +1,5 @@
 {% set name = "smact" %}
-{% set version = "3.0.1" %}
+{% set version = "3.0.2" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 34b73147a242b8f2ec23dd8a588ac05f3ab14fb3949b2502c47a9ba3c9607e5b
+  sha256: 2560e09085b105080c7a867153aca90345b357651a1047ef5bfec9da7da73dc4
 
 build:
   noarch: python
