@@ -1,5 +1,5 @@
 {% set name = "smact" %}
-{% set version = "3.0.2" %}
+{% set version = "3.2.0" %}
 {% set python_min = "3.10" %}
 
 package:
@@ -8,12 +8,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2560e09085b105080c7a867153aca90345b357651a1047ef5bfec9da7da73dc4
+  sha256: 5c1c252bfffb86aef3e42f8712b0e42fbc968fe57a792d22c87cfe61e42761e4
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -23,12 +23,14 @@ requirements:
   run:
     - python >={{ python_min }}
     - scipy
-    - numpy
-    - spglib
-    - pymatgen
+    - numpy <3
+    - spglib >=2.6.0
+    - pymatgen >=2024.2.20
     - ase
     - pandas
     - pathos
+    - pandarallel[optional] >=1.6.5
+    - typing-extensions
 
 test:
   imports:
