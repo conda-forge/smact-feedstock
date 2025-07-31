@@ -23,12 +23,14 @@ requirements:
   run:
     - python >={{ python_min }}
     - scipy
-    - numpy
-    - spglib
-    - pymatgen
+    - numpy<3
+    - spglib >=2.6.0
+    - pymatgen >=2024.2.20
     - ase
     - pandas
     - pathos
+    - pandarallel[optional] >=1.6.5
+    - typing-extensions
 
 test:
   imports:
