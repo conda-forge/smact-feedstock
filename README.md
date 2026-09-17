@@ -60,6 +60,22 @@ or with `mamba`:
 mamba install smact
 ```
 
+Optional SMACT functionality is distributed as separate feature packages, so
+environments only install the dependencies they use:
+
+```
+conda install smact-property-prediction
+conda install smact-optional
+```
+
+The available feature packages are `smact-mp`, `smact-crystal-space`,
+`smact-featurisers`, `smact-visualisation`, `smact-ml`,
+`smact-property-prediction`, and `smact-optional`. Install
+`smact-optional smact-property-prediction` to match SMACT's full documented
+tutorial environment. The property-prediction package uses conda-forge's
+PyTorch build; select a GPU-specific PyTorch configuration separately when
+needed.
+
 It is possible to list all of the versions of `smact` available on your platform with `conda`:
 
 ```
@@ -155,4 +171,3 @@ Feedstock Maintainers
 * [@AntObi](https://github.com/AntObi/)
 * [@KingaMas](https://github.com/KingaMas/)
 * [@aronwalsh](https://github.com/aronwalsh/)
-
