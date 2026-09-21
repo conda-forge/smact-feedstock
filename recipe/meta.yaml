@@ -19,12 +19,12 @@ outputs:
       script: $PYTHON -m pip install . -vv
     requirements:
       host:
-        - python
+        - python {{ python_min }}
         - setuptools >=77.0.0
         - pip
         - numpy
       run:
-        - python <=3.14
+        - python >={{ python_min }},<3.14
         - scipy
         - numpy <3
         - spglib >=2.6.0
@@ -43,7 +43,7 @@ outputs:
         - pip check
       requires:
         - pip
-        - python
+        - python {{ python_min }}
 
   # The following noarch meta-packages mirror SMACT's public runtime extras.
   # They deliberately use conda package names (for example, pytorch rather
