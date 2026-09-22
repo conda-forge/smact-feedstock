@@ -37,6 +37,13 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-smact-green.svg)](https://anaconda.org/conda-forge/smact) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/smact.svg)](https://anaconda.org/conda-forge/smact) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/smact.svg)](https://anaconda.org/conda-forge/smact) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/smact.svg)](https://anaconda.org/conda-forge/smact) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-smact--crystal--space-green.svg)](https://anaconda.org/conda-forge/smact-crystal-space) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/smact-crystal-space.svg)](https://anaconda.org/conda-forge/smact-crystal-space) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/smact-crystal-space.svg)](https://anaconda.org/conda-forge/smact-crystal-space) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/smact-crystal-space.svg)](https://anaconda.org/conda-forge/smact-crystal-space) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-smact--featurisers-green.svg)](https://anaconda.org/conda-forge/smact-featurisers) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/smact-featurisers.svg)](https://anaconda.org/conda-forge/smact-featurisers) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/smact-featurisers.svg)](https://anaconda.org/conda-forge/smact-featurisers) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/smact-featurisers.svg)](https://anaconda.org/conda-forge/smact-featurisers) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-smact--ml-green.svg)](https://anaconda.org/conda-forge/smact-ml) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/smact-ml.svg)](https://anaconda.org/conda-forge/smact-ml) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/smact-ml.svg)](https://anaconda.org/conda-forge/smact-ml) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/smact-ml.svg)](https://anaconda.org/conda-forge/smact-ml) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-smact--mp-green.svg)](https://anaconda.org/conda-forge/smact-mp) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/smact-mp.svg)](https://anaconda.org/conda-forge/smact-mp) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/smact-mp.svg)](https://anaconda.org/conda-forge/smact-mp) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/smact-mp.svg)](https://anaconda.org/conda-forge/smact-mp) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-smact--optional-green.svg)](https://anaconda.org/conda-forge/smact-optional) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/smact-optional.svg)](https://anaconda.org/conda-forge/smact-optional) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/smact-optional.svg)](https://anaconda.org/conda-forge/smact-optional) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/smact-optional.svg)](https://anaconda.org/conda-forge/smact-optional) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-smact--property--prediction-green.svg)](https://anaconda.org/conda-forge/smact-property-prediction) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/smact-property-prediction.svg)](https://anaconda.org/conda-forge/smact-property-prediction) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/smact-property-prediction.svg)](https://anaconda.org/conda-forge/smact-property-prediction) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/smact-property-prediction.svg)](https://anaconda.org/conda-forge/smact-property-prediction) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-smact--visualisation-green.svg)](https://anaconda.org/conda-forge/smact-visualisation) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/smact-visualisation.svg)](https://anaconda.org/conda-forge/smact-visualisation) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/smact-visualisation.svg)](https://anaconda.org/conda-forge/smact-visualisation) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/smact-visualisation.svg)](https://anaconda.org/conda-forge/smact-visualisation) |
 
 Installing smact
 ================
@@ -48,31 +55,73 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `smact` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
-conda install smact
+conda install smact smact-crystal-space smact-featurisers smact-ml smact-mp smact-optional smact-property-prediction smact-visualisation
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
-mamba install smact
+mamba install smact smact-crystal-space smact-featurisers smact-ml smact-mp smact-optional smact-property-prediction smact-visualisation
 ```
 
-It is possible to list all of the versions of `smact` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add smact smact-crystal-space smact-featurisers smact-ml smact-mp smact-optional smact-property-prediction smact-visualisation
+# for installing globally
+pixi global install smact smact-crystal-space smact-featurisers smact-ml smact-mp smact-optional smact-property-prediction smact-visualisation
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `smact` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search smact --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search smact --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search smact --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -84,6 +133,8 @@ mamba repoquery whoneeds smact --channel conda-forge
 # List dependencies of `smact`:
 mamba repoquery depends smact --channel conda-forge
 ```
+
+</details>
 
 
 About conda-forge

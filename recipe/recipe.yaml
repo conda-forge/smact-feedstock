@@ -1,0 +1,230 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  version: "4.0.0"
+
+recipe:
+  name: smact
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/s/smact/smact-${{ version }}.tar.gz
+  sha256: f2372e9127565a298e3a49a0b0488bd3cf67b6a591b6ebb752f8b9ce25736a68
+
+build:
+  number: 2
+  noarch: python
+
+outputs:
+  - package:
+      name: smact
+    build:
+      noarch: python
+      script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    requirements:
+      host:
+        - python ${{ python_min }}.*
+        - setuptools >=77.0.0
+        - pip
+        - numpy
+      run:
+        - python >=${{ python_min }},<3.14
+        - scipy
+        - numpy <3
+        - spglib >=2.6.0
+        - pymatgen >=2024.2.20
+        - ase
+        - pandas
+        - pathos
+        - pandarallel >=1.6.5
+        - tabulate
+        - tqdm
+        - typing-extensions
+    tests:
+      - python:
+          imports:
+            - smact
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.12.*
+            - 3.13.*
+
+  # The following noarch meta-packages mirror SMACT's public runtime extras.
+  # They deliberately use conda package names (for example, pytorch rather
+  # than the PyPI name torch) and allow users to select only the functionality
+  # they need.
+  - package:
+      name: smact-mp
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage("smact", upper_bound="x.x") }}
+        - mp-api >=0.45.3
+    tests:
+      - python:
+          imports:
+            - mp_api.client
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.12.*
+            - 3.13.*
+
+  - package:
+      name: smact-crystal-space
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage("smact-mp", upper_bound="x.x") }}
+        - elementembeddings >=0.4
+        - umap-learn ==0.5.7
+        - python-kaleido >=0.2.1
+    tests:
+      - python:
+          imports:
+            - elementembeddings
+            - umap
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.12.*
+            - 3.13.*
+
+  - package:
+      name: smact-featurisers
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage("smact", upper_bound="x.x") }}
+        - matminer
+        - elementembeddings
+    tests:
+      - python:
+          imports:
+            - elementembeddings
+            - matminer
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.12.*
+            - 3.13.*
+
+  - package:
+      name: smact-visualisation
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage("smact", upper_bound="x.x") }}
+        - seaborn >=0.13.2
+        - pymatviz >=0.15
+        - dash >=2.18.2
+    tests:
+      - python:
+          imports:
+            - dash
+            - pymatviz
+            - seaborn
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.12.*
+            - 3.13.*
+
+  - package:
+      name: smact-ml
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage("smact-featurisers", upper_bound="x.x") }}
+        - xgboost
+        - shap
+    tests:
+      - python:
+          imports:
+            - shap
+            - xgboost
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.12.*
+            - 3.13.*
+
+  - package:
+      name: smact-property-prediction
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage("smact", upper_bound="x.x") }}
+        # aviary-models must be available from conda-forge before this output
+        # can be built. Do not replace it with a pip installation: that would
+        # make the environment unsafely mutable after conda solves it.
+        - aviary-models >=1.2.1
+        - pytorch >=2.0.0,<2.11
+        - requests
+    tests:
+      - python:
+          imports:
+            - aviary.roost.model
+            - smact.property_prediction
+            - torch
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.12.*
+            - 3.13.*
+
+  - package:
+      name: smact-optional
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage("smact-mp", upper_bound="x.x") }}
+        - ${{ pin_subpackage("smact-visualisation", upper_bound="x.x") }}
+        - ${{ pin_subpackage("smact-ml", upper_bound="x.x") }}
+        - pydantic >=2.9.2
+        - matminer >=0.9.2
+        - python-kaleido >=0.2.1
+        - llvmlite >=0.40
+        # `matplotlib-venn[shapely]` is a PyPI extra. Conda represents the
+        # same request as the package and its optional dependency separately.
+        - matplotlib-venn >=1.1.2
+        - shapely
+    tests:
+      - python:
+          imports:
+            - llvmlite
+            - matplotlib_venn
+            - pydantic
+            - shapely
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.12.*
+            - 3.13.*
+
+about:
+  homepage: https://github.com/WMD-group/SMACT
+  summary: Python package to aid materials design and informatics
+  description: |
+    Semiconducting Materials by Analogy and Chemical Theory (SMACT)
+    is a collection of rapid screening tools that uses data about chemical elements.
+  license: MIT
+  license_file: LICENSE
+  documentation: https://smact.readthedocs.io/en/latest/
+  repository: https://github.com/WMD-group/SMACT
+
+extra:
+  feedstock-name: smact
+  recipe-maintainers:
+    - AntObi
+    - KingaMas
+    - aronwalsh
