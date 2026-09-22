@@ -54,7 +54,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("smact", exact=True) }}
+        - {{ pin_subpackage("smact", max_pin="x.x") }}
         - mp-api >=0.45.3
     test:
       commands:
@@ -67,7 +67,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("smact-mp", exact=True) }}
+        - {{ pin_subpackage("smact-mp", max_pin="x.x") }}
         - elementembeddings >=0.4
         - umap-learn ==0.5.7
         - python-kaleido >=0.2.1
@@ -82,7 +82,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("smact", exact=True) }}
+        - {{ pin_subpackage("smact", max_pin="x.x") }}
         - matminer
         - elementembeddings
     test:
@@ -96,7 +96,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("smact", exact=True) }}
+        - {{ pin_subpackage("smact", max_pin="x.x") }}
         - seaborn >=0.13.2
         - pymatviz >=0.15
         - dash >=2.18.2
@@ -111,7 +111,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("smact-featurisers", exact=True) }}
+        - {{ pin_subpackage("smact-featurisers", max_pin="x.x") }}
         - xgboost
         - shap
     test:
@@ -125,7 +125,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("smact", exact=True) }}
+        - {{ pin_subpackage("smact", max_pin="x.x") }}
         # aviary-models must be available from conda-forge before this output
         # can be built. Do not replace it with a pip installation: that would
         # make the environment unsafely mutable after conda solves it.
@@ -143,9 +143,9 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - {{ pin_subpackage("smact-mp", exact=True) }}
-        - {{ pin_subpackage("smact-visualisation", exact=True) }}
-        - {{ pin_subpackage("smact-ml", exact=True) }}
+        - {{ pin_subpackage("smact-mp", max_pin="x.x") }}
+        - {{ pin_subpackage("smact-visualisation", max_pin="x.x") }}
+        - {{ pin_subpackage("smact-ml", max_pin="x.x") }}
         - pydantic >=2.9.2
         - matminer >=0.9.2
         - python-kaleido >=0.2.1
