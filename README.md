@@ -16,7 +16,6 @@ Documentation: https://smact.readthedocs.io/en/latest/
 Semiconducting Materials by Analogy and Chemical Theory (SMACT)
 is a collection of rapid screening tools that uses data about chemical elements.
 
-
 Current build status
 ====================
 
