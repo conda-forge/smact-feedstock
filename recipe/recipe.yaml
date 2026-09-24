@@ -10,7 +10,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/s/smact/smact-${{ version }}.tar.gz
-  sha256: f2372e9127565a298e3a49a0b0488bd3cf67b6a591b6ebb752f8b9ce25736a68
+  sha256: a05e6888910f16ee07a64eba07cd3a2b6b7650b75be1495264325f0ee0e4a62c
 
 build:
   number: 0
