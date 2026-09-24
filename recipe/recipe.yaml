@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "4.0.0"
+  version: "4.0.2"
 
 recipe:
   name: smact
@@ -13,7 +13,7 @@ source:
   sha256: f2372e9127565a298e3a49a0b0488bd3cf67b6a591b6ebb752f8b9ce25736a68
 
 build:
-  number: 2
+  number: 0
   noarch: python
 
 outputs:
